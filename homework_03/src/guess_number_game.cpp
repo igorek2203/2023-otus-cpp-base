@@ -20,6 +20,9 @@ void init_args(int argc, char** argv, int &max_value, bool &only_print_results) 
     while (i < argc) {
         std::string arg_name{ argv[i] };
         if (arg_name == "-max" || arg_name == "--max") {
+            if (argc <= (i + 1)) {
+                throw std::runtime_error("Value must be set for program argument [-max]");
+            }
             std::string string_value = argv[i + 1];
             if (!check_number(string_value)) {
                 throw std::runtime_error("Incorrect value for program argument [-max]");
