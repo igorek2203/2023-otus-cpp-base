@@ -3,7 +3,7 @@
 
 #include <string>
 
-void save_result(std::string &user_name, int attempts);
+void save_result(const std::string &user_name, int attempts);
 void print_results();
 
 #endif

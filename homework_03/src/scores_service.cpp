@@ -5,7 +5,7 @@
 
 const std::string scores_file_name = "scores.csv";
 
-void save_result(std::string &user_name, int attempts) {
+void save_result(const std::string &user_name, int attempts) {
     std::ofstream o_scores_file(scores_file_name, std::ios_base::app);
     if (!o_scores_file.is_open()) {
         std::string err_msg = "";
