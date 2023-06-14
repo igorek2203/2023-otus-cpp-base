@@ -3,7 +3,7 @@
 #include <string>
 #include "astnode.hpp"
 
-const std::string minus_ch = "-";
+inline const std::string minus_ch = "-";
 
 class Sub : public ASTNode {
     public:

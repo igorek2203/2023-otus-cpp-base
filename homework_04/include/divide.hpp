@@ -3,7 +3,7 @@
 #include <string>
 #include "astnode.hpp"
 
-const std::string divide_ch = "/";
+inline const std::string divide_ch = "/";
 
 class Div : public ASTNode {
     public:

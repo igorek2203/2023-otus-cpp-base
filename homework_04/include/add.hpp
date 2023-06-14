@@ -3,7 +3,7 @@
 #include <string>
 #include "astnode.hpp"
 
-const std::string plus_ch = "+";
+inline const std::string plus_ch = "+";
 
 class Add : public ASTNode {
     public:

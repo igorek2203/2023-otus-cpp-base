@@ -24,6 +24,7 @@ int main() {
     ASTNode *ast = parser.parse();
     if (ast) {
          ast->print(std::cout);
+         delete ast;
     }
 
     return 0;

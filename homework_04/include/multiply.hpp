@@ -3,7 +3,7 @@
 #include <string>
 #include "astnode.hpp"
 
-const std::string multiply_ch = "*";
+inline const std::string multiply_ch = "*";
 
 class Mul : public ASTNode {
     public:
