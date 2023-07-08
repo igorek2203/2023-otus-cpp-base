@@ -1,10 +1,10 @@
 #include <iostream>
 #include <iomanip>
 #include "statistics.hpp"
-#include "min_statistics.cpp"
-#include "max_statistics.cpp"
-#include "mean_statistics.cpp"
-#include "std_statistics.cpp"
+#include "min_statistics.hpp"
+#include "max_statistics.hpp"
+#include "mean_statistics.hpp"
+#include "std_statistics.hpp"
 
 int main() {
 	const size_t statistics_count = 4;

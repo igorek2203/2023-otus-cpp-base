@@ -1,29 +1,22 @@
 #include <limits>
-#include "statistics.hpp"
+#include "mean_statistics.hpp"
 
 namespace stat {
-    class Mean : public IStatistics {
-    public:
-        explicit Mean() : 
-            sum{0},
-            count{0}
-            {}
+    Mean::Mean() : 
+        sum{0},
+        count{0}
+        {}
 
-        void update(double next) override {
-            sum += next;
-            count++;
-        }
+    void Mean::update(double next) {
+        Mean::sum += next;
+        Mean::count++;
+    }
 
-        double eval() const override {
-            return count == 0 ? 0 : sum/count;
-        }
+    double Mean::eval() const {
+        return Mean::count == 0 ? 0 : Mean::sum / Mean::count;
+    }
 
-        const char * name() const override {
-            return "mean";
-        }
-
-    private:
-        double sum;
-        int count;
-    };
+    const char *Mean::name() const {
+        return "mean";
+    }
 }

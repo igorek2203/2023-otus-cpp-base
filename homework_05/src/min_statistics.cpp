@@ -1,27 +1,21 @@
-#include <limits>
-#include "statistics.hpp"
+#include "min_statistics.hpp"
 
 namespace stat {
-	class Min : public IStatistics {
-	public:
-		explicit Min() : m_min{std::numeric_limits<double>::max()} {
-		}
+	Min::Min() : 
+		m_min{std::numeric_limits<double>::max()} 
+		{}
 
-		void update(double next) override {
-			if (next < m_min) {
-				m_min = next;
-			}
+	void Min::update(double next) {
+		if (next < Min::m_min) {
+			Min::m_min = next;
 		}
+	}
 
-		double eval() const override {
-			return m_min;
-		}
+	double Min::eval() const {
+		return Min::m_min;
+	}
 
-		const char * name() const override {
-			return "min";
-		}
-
-	private:
-		double m_min;
-	};
+	const char * Min::name() const {
+		return "min";
+	}
 }

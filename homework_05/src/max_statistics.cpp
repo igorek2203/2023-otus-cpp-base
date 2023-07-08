@@ -1,27 +1,22 @@
 #include <limits>
-#include "statistics.hpp"
+#include "max_statistics.hpp"
 
 namespace stat {
-    class Max : public IStatistics {
-    public:
-        explicit Max() : m_max{std::numeric_limits<double>::min()} {
-        }
+    Max::Max() :
+        m_max{std::numeric_limits<double>::lowest()}
+        {}
 
-        void update(double next) override {
-            if (next > m_max) {
-                m_max = next;
-            }
+    void Max::update(double next) {
+        if (next > Max::m_max) {
+            Max::m_max = next;
         }
+    }
 
-        double eval() const override {
-            return m_max;
-        }
+    double Max::eval() const {
+        return Max::m_max;
+    }
 
-        const char * name() const override {
-            return "max";
-        }
-
-    private:
-        double m_max;
-    };
+    const char *Max::name() const {
+        return "max";
+    }
 }
