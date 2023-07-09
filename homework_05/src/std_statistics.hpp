@@ -15,6 +15,8 @@ namespace stat {
         const char *name() const override;
 
     private:
+        int count = 0;
+        double sum = 0;
         double *elements;
     };
 }

@@ -1,40 +1,43 @@
 #include <math.h>
+#include <iostream>
 #include "std_statistics.hpp"
 
 namespace stat {
-    size_t capacity = 10;
-    double sum = 0;
-    int count = 0;
+    size_t capacity = 5;
 
-    double *allocateNewArray(size_t cap) {
-        return (double *)malloc(sizeof(double) * cap);
+    double *newArray(size_t capacity) {
+        return new double[capacity]{};
     }
 
-    void extendArrayOfElements(double *elements, size_t newCapacity) {
-        double *new_elem = allocateNewArray(newCapacity);
-        for (int i = 0; i < count - 2 ; ++i) {
-            new_elem[i] = elements[i];
+    void extendArrayOfElements(double *elements, int count, size_t newCapacity) {
+        double *new_elem  = newArray(newCapacity);
+        for (int i = 0; i < count; ++i) {
+           new_elem[i] = elements[i];
         }
-        delete elements;
+        delete[] elements;
         elements = new_elem;
+        new_elem = NULL;
     }
 
     Std::Std() :
-        elements{allocateNewArray(capacity)}
-        {};
+        count{0},
+        sum{0}
+        {
+            elements = newArray(capacity);
+        };
 
     Std::~Std() {
-        delete elements;
+        delete[] elements;
     }
 
     void Std::update(double next) {
         sum += next;
+        elements[count] = next;
         count++;
-        if (count > 10) {
-            capacity += 10;
-            extendArrayOfElements(Std::elements, capacity);
+        if ((size_t) count >= capacity) {
+            capacity += 5;
+            extendArrayOfElements(elements, count, capacity);
         }
-        this->elements[count - 1] = next;
     }
 
     double Std::eval() const {
