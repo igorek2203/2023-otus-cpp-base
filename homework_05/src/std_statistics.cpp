@@ -5,11 +5,11 @@
 namespace stat {
     size_t capacity = 5;
 
-    double *newArray(size_t capacity) {
-        return new double[capacity]{};
+    double *newArray(size_t cap) {
+        return new double[cap]{};
     }
 
-    void extendArrayOfElements(double *elements, int count, size_t newCapacity) {
+    void extendArrayOfElements(double *&elements, int count, size_t newCapacity) {
         double *new_elem  = newArray(newCapacity);
         for (int i = 0; i < count; ++i) {
            new_elem[i] = elements[i];
